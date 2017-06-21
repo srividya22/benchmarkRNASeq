@@ -4,4 +4,5 @@ Benchmarking RNASeq tools in Plants
 -- Run RNASeq aligners Tophat2,Hisat2, STAR, Salmon, Sailfish, Kallisto
 -- Generate Summary tatistics and reports , visulizations
 
-
+References:
+RPKM vs FPKM vs TPM explained : http://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/
