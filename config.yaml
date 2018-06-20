@@ -1,0 +1,126 @@
+---
+################################################################################
+# Pipeline options                                                             #
+################################################################################
+BASE: '/seq/schatz/sramakri/benchmark/RNASeq'
+ORG: 'ath_chr4'
+EXE_DIR: '/sonas-hs/schatz/hpc/home/sramakri/bin'
+CONDA_DIR: '/sonas-hs/schatz/hpc/home/sramakri/bin/miniconda2/envs/env-RNASeq/bin'
+sample_file: '/seq/schatz/sramakri/benchmarkRNASeq/samples.txt'
+
+################################################################################
+# Input configuration                                                          #
+################################################################################
+TRUE_COV: '5M'
+
+COV_EXTN:
+ - '5M'
+ - '10M'
+ - '15M'
+ - '20M'
+ - '25M'
+
+GT_EXTN:
+ - '0'
+ - '0.001'
+ - '0.005'
+ - '0.01'
+ - '0.02'
+ - '0.03'
+ - '0.04'
+ - '0.05'
+
+A_EXTN:
+ - '0'
+ - '5'
+ - '10'
+ - '20'
+ - '25'
+
+################################################################################
+# Rule configuration                                                           #
+################################################################################
+
+#### General/shared rules ####
+bowtie_index:
+ extra: ""
+ threads: 10
+
+hisat2_index:
+ extra: ""
+ threads: 10
+
+star_index:
+ extra: ""
+ threads: 10
+
+gmap_index:
+ extra: ""
+ threads: 10
+
+novoalign_index:
+ extra: ""
+ threads: 10
+
+soapsplice_index:
+ extra: ""
+ threads: 10
+
+# For all Aligners
+
+tophat2:
+ extra: ""
+ threads: 10
+
+hisat2:
+ extra: ""
+ threads: 10
+
+star:
+ extra: ""
+ threads: 10
+
+gmap:
+ extra: ""
+ threads: 10
+
+novoalign:
+ extra: ""
+ threads: 10
+
+mapsplice:
+ extra: ""
+ threads: 10
+
+soapsplice:
+ extra: ""
+ threads: 10
+
+# For all Assemblersi #
+
+cufflinks:
+ extra: ""
+ threads: 10
+
+kallisto:
+ extra: ""
+ threads: 10
+
+salmon:
+ extra: ""
+ threads: 10
+
+sailfish:
+ extra: ""
+ threads: 10
+
+rsem:
+ extra: ""
+ threads: 10
+
+express:
+ extra: ""
+ threads: 10
+
+multiqc:
+ ext ra: ''
