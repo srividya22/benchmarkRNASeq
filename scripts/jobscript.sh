@@ -8,7 +8,7 @@
 #$ -m bes                  # Email at Begin and End of job or if suspended
 #$ -l m_mem_free=10g
 #$ -M srividya.ramki@gmail.com         # E-mail address (change to your e-mail)
-#source activate env-RNASeq
+source activate env-RNASeq
 #source activate env-RNASeq
 cmd=$*
 SECONDS=0

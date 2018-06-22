@@ -64,6 +64,12 @@ def get_samples_by_condition(condition):
 # Rules                                                                        #
 ################################################################################
 
+##### setup report #####
+
+report: "report/workflow.rst"
+
+########################
+
 rule all:
     input:
         dirs,

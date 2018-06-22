@@ -1,0 +1,5 @@
+sample condition fasta1 fasta2
+sample01 hy5 sample_01_1.fasta sample_01_2.fasta
+sample02 hy5 sample_02_1.fasta sample_02_2.fasta
+sample03 WT sample_03_1.fasta sample_03_2.fasta
+sample04 WT sample_04_1.fasta sample_04_2.fasta
