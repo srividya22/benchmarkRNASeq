@@ -1,0 +1,7 @@
+__default__:
+    account: sramakri
+    n: 1
+    mem: 10G
+    cores: 8
+    logdir: "/seq/schatz/sramakri/benchmarkRNASeq/"
+    time: 15:00:00
