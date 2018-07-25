@@ -13,13 +13,14 @@ org = config['ORG']
 samples = pd.read_csv(config['sample_file'], sep=' ')
 is_paired = "fasta2" in samples.columns
 etype = [ "alt_genome_annotations" , "alt_coverage" , "alt_reference"]
-exp_type = etype[0] 
+exp_type = etype[0]
 
 ################################################################################
 # Tools used in the
 ################################################################################
 
-aligners = ["tophat2", "hisat2", "star" , "gsnap" , "novoalign" , "soapsplice" , "mapsplice", "kallisto", "sailfish", "salmon" ]
+#aligners = ["tophat2", "hisat2", "star" , "gsnap" , "novoalign" , "soapsplice" , "mapsplice", "kallisto", "sailfish", "salmon" ]
+aligners = ["tophat2", "hisat2_cuff", "hisat2_str", "star", "star_2pass" , "sailfish" , "salmon" , "kallisto", "soapsplice","mapsplice2", "gsnap" , "novoalign" ]
 assemblers = ["cufflinks" , "stringtie" , "RSEM" , "kallisto", "sailfish" , "salmon" , "htseq" ,"express" ]
 
 ################################################################################
@@ -37,10 +38,17 @@ ann_logs_dir = [ logs_base +"/"+x for x in config['A_EXTN'] ]
 # Remove variables #
 #gt_logs_dir = [ logs_dir[2]+"/"+x for x in config['GT_EXTN'] ]
 #cov_logs_dir = [ logs_dir[1]+"/"+x for x in config['COV_EXTN'] ]
+# Remove these variables
 
 ## Make one directory variable listing all directories in the experiment
 dirs= [j for i in [ann_results_dir,ann_logs_dir] for j in i]
 
+import os
+for directory in dirs:
+  if not os.path.exists(directory):
+     os.mkdir(directory)
+
+output_dirc=expand("{rbase}/{aext}",rbase=results_base,aext=config['A_EXTN'])
 ################################################################################
 # Functions                                                                    #
 ################################################################################
@@ -73,17 +81,18 @@ report: "report/workflow.rst"
 rule all:
     input:
         dirs,
-        expand("{rbase}/{aext}/{aligners}/run.log",rbase=results_base,aext=config['A_EXTN'],aligners=aligners)
+        expand("{odir}/{aligner}/sample1/run.log",odir=output_dirc,aligner=aligners)
+        #expand("{rbase}/{aext}/{aligners}/run.log",rbase=results_base,aext=config['A_EXTN'],aligners=aligners)
         #"counts/merged.log2.txt",
         #"qc/multiqc_report.html"
 
-rule mkdirs:
-    output:
-         dirs
-    shell:
-         "mkdir -p "+' '.join(dirs)
+##rule mkdirs:
+#    output:
+#         dirs
+#    shell:
+#         "mkdir -p "+' '.join(ldirs)
 
 include: "rules/alignment.smk"
 #include: "rules/assemble.smk"
 #include: "rules/alignment_qc.smk"
-#include: "rules/counts.smk"
+##include: "rules/counts.smk"
