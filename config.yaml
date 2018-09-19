@@ -5,7 +5,7 @@
 BASE: '/seq/schatz/sramakri/benchmark/RNASeq'
 ORG: 'ath_chr4'
 EXE_DIR: '/sonas-hs/schatz/hpc/home/sramakri/bin'
-CONDA_DIR: '/sonas-hs/schatz/hpc/home/sramakri/bin/miniconda2/envs/env-RNASeq/bin'
+CONDA_DIR: '/sonas-hs/schatz/hpc/home/sramakri/miniconda2/envs/env-RNASeq/bin'
 sample_file: '/seq/schatz/sramakri/benchmarkRNASeq/samples.txt'
 
 ################################################################################
@@ -31,11 +31,11 @@ GT_EXTN:
  - '0.05'
 
 A_EXTN:
- - '0'
- - '5'
- - '10'
- - '20'
- - '25'
+ - '0pcent'
+ - '5pcent'
+ - '10pcent'
+ - '20pcent'
+ - '25pcent'
 
 ################################################################################
 # Rule configuration                                                           #
@@ -89,6 +89,10 @@ novoalign:
  threads: 10
 
 mapsplice:
+ extra: ""
+ threads: 10
+
+subread:
  extra: ""
  threads: 10
 
